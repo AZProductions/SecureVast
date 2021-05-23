@@ -1,0 +1,2 @@
+D:\Projects\PassGen\bin\net58\SecureVast.pdb
+D:\Projects\PassGen\bin\net58\SecureVast.exe

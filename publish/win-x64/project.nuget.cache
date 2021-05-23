@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "vRxMDGDa06itd8/7CKX0Zl/Gua+S1NT7ClUUIV6IdXK1wxO50OEAI42YaC5pkzeY4a2min3D5hvRiRAu3u207w==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\PassGen\\.net core\\SecureVast\\SecureVast.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.0.3\\microsoft.netcore.app.runtime.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.0.3\\microsoft.windowsdesktop.app.runtime.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.0.3\\microsoft.aspnetcore.app.runtime.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\zmann\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

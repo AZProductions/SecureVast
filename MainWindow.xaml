@@ -1,0 +1,42 @@
+﻿<Window x:Class="SecureVast.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecureVast"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="SecureVast" Height="360" Width="450" Loaded="Window_Loaded">
+    <Grid>
+        <CheckBox x:Name="Uppercase" Content="Uppercase" HorizontalAlignment="Left" Margin="15,96,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+        <CheckBox x:Name="Lowercase" Content="Lowercase" HorizontalAlignment="Left" Margin="15,124,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="abcdefghijklmnopqrstuvwxyz"/>
+        <CheckBox x:Name="Numbers" Content="Numbers" HorizontalAlignment="Left" Margin="15,152,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="0123456789"/>
+        <Label Content="Preferences" HorizontalAlignment="Left" Margin="9,55,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" />
+
+        <TextBox x:Name="num" HorizontalAlignment="Left" Height="21" Margin="172,65,0,0" TextWrapping="Wrap"  Text="12" Padding="1" VerticalAlignment="Top" TextAlignment="Center" Width="29" MaxLength="100" MaxLines="1"/>
+        <Label Content="Length" HorizontalAlignment="Left" Margin="125,61,0,0" VerticalAlignment="Top"/>
+        <Button Content="Generate" HorizontalAlignment="Left" Margin="15,283,0,0" VerticalAlignment="Top" Width="116" Padding="0" Click="Button_Click" Height="33" FontSize="20" FontWeight="Bold"/>
+        <CheckBox x:Name="Currencysymbols" Content="Currency symbols" HorizontalAlignment="Left" Margin="125,180,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Symbols" Content="Symbols" HorizontalAlignment="Left" Margin="15,178,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFDDDDDD" HorizontalAlignment="Left" Height="33" Margin="143,283,0,0" Stroke="#FF707070" VerticalAlignment="Top" Width="{Binding ElementName=resulttext, Path=ActualWidth}"/>
+        <Label x:Name="resulttext" Content="x" HorizontalAlignment="Left" Margin="143,280,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" MouseEnter="resulttext_MouseEnter" MouseLeave="resulttext_MouseLeave" TouchEnter="resulttext_TouchEnter" MouseDown="resulttext_MouseDown" />
+        <Image HorizontalAlignment="Left" Height="84" Margin="9,-19,0,0" VerticalAlignment="Top" Width="79" Source="Resources/bitmap.png" TouchEnter="Image_TouchEnter" MouseDown="Image_MouseDown_1" ToolTip="github.com/AZProductions/securevast"/>
+        <Rectangle x:Name="copyrectangle" Fill="#FF0066BB" HorizontalAlignment="Left" Height="29" Margin="152,258,0,0" Stroke="#00000000" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="copylabel" Content="Click to copy" HorizontalAlignment="Left" Margin="151,258,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+        <CheckBox x:Name="LatinExtendedA" Content="Latin Extended-A" HorizontalAlignment="Left" Margin="125,94,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="LatinExtendedB" Content="Latin Extended-B" HorizontalAlignment="Left" Margin="125,124,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="HistoricandPhonetic" Content="Historic and Phonetic" HorizontalAlignment="Left" Margin="125,152,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="RomanNumerals" Content="Roman Numerals" HorizontalAlignment="Left" Margin="125,208,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Greek" Content="Greek" HorizontalAlignment="Left" Margin="15,206,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Cyrillic" Content="Cyrillic" HorizontalAlignment="Left" Margin="271,206,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="GreekExtended" Content="Greek Extended" HorizontalAlignment="Left" Margin="15,234,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Coptic" Content="Coptic" HorizontalAlignment="Left" Margin="271,180,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="EnclosedAlphanumerics" Content="Enclosed Alphanumerics" HorizontalAlignment="Left" Margin="271,94,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="GeometricShapes" Content="Geometric Shapes" HorizontalAlignment="Left" Margin="271,124,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="MathematicalOperators" Content="Mathematical Operators" HorizontalAlignment="Left" Margin="271,152,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CroatianSlovenianRumanian" Content="Croatian, Slovenian, Rumanian" HorizontalAlignment="Left" Margin="125,236,0,0" VerticalAlignment="Top"/>
+        <Label Content="Version 1.0, AZ Software 2021" HorizontalAlignment="Left" Margin="88,10,0,0" VerticalAlignment="Top" Foreground="#FF8D8D8D" FontSize="10"/>
+        <Image HorizontalAlignment="Left" Height="44" Margin="394,0,0,0" VerticalAlignment="Top" Width="40" Source="Resources/100p.png" RenderTransformOrigin="0.138,0.477" MouseDown="Image_MouseDown" ToolTip="github.com/AZProductions"/>
+    </Grid>
+</Window>

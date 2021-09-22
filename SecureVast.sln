@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureVast", "SecureVast\SecureVast.csproj", "{374CE38B-BF1A-4BF3-B56C-45A97C1CA710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureVast.SDK", "SecureVast.SDK\SecureVast.SDK.csproj", "{92D62A83-D598-4DE8-88A0-113188656F12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{374CE38B-BF1A-4BF3-B56C-45A97C1CA710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374CE38B-BF1A-4BF3-B56C-45A97C1CA710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374CE38B-BF1A-4BF3-B56C-45A97C1CA710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374CE38B-BF1A-4BF3-B56C-45A97C1CA710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D62A83-D598-4DE8-88A0-113188656F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D62A83-D598-4DE8-88A0-113188656F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D62A83-D598-4DE8-88A0-113188656F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D62A83-D598-4DE8-88A0-113188656F12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9479C08C-BF39-441E-AA09-ACD9C8EB1585}
+	EndGlobalSection
+EndGlobal

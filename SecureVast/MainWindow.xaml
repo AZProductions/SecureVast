@@ -1,4 +1,4 @@
-﻿<hc:Window x:Class="SecureVast.MainWindow"
+﻿<hc:Window x:Class="SecureVast.MainWindow" x:Name="window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,12 +17,16 @@
     <Grid>
         <hc:TabControl IsTabFillEnabled="False">
             <hc:TabItem Header="Hashes">
+                <DockPanel>
+                    <hc:Card Width="500" DockPanel.Dock="Right" Margin="10, 5, 0, 5" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                        
+                    </hc:Card>
+                </DockPanel>
             </hc:TabItem>
             <hc:TabItem Header="Password Generator"></hc:TabItem>
             <hc:TabItem Header="Analytics"></hc:TabItem>
             <hc:TabItem Header="More"></hc:TabItem>
         </hc:TabControl>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Content="Preferences" Background="Transparent" BorderBrush="Transparent" Margin="0,0,5,0"></Button>
     </Grid>
     <hc:Window.NonClientAreaContent>
         <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">

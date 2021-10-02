@@ -10,8 +10,9 @@
         ShowTitle="False"
         hc:Theme.Skin="Dark"
         Title="SecureVast"
-           MinHeight="375"
-           MinWidth="700"
+        MinHeight="375"
+        MinWidth="700"
+        Topmost="True"
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1050">
     <Grid>
@@ -23,27 +24,66 @@
                     </hc:Card>
                 </DockPanel>
             </hc:TabItem>
-            <hc:TabItem Header="Password Generator"></hc:TabItem>
-            <hc:TabItem Header="Analytics"></hc:TabItem>
-            <hc:TabItem Header="More"></hc:TabItem>
+            <hc:TabItem Header="Password Generator">
+                <Grid>
+                    <hc:ImageBlock x:Name="img" Height="200" Width="200" Margin="0, -300, 0, 0"></hc:ImageBlock>
+                    <hc:TextBox x:Name="tb" Width="200" Height="30" TextChanged="tb_TextChanged">
+                        
+                    </hc:TextBox>
+                </Grid>
+            </hc:TabItem>
+            <hc:TabItem Header="QR Codes">
+                <DockPanel>
+                    <hc:FlexPanel FlexDirection="Row" AlignItems="Stretch" DockPanel.Dock="Top">
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10">
+                        </hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                    </hc:FlexPanel>
+                    <hc:FlexPanel FlexDirection="Row" AlignItems="Stretch" DockPanel.Dock="Top">
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                        <hc:Card Height="100" Width="300" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 10, 10, 10"></hc:Card>
+                    </hc:FlexPanel>
+                    <Label Margin="0, 0, 0, 10" Content="Are you missing something? Please let us know to improve SecureVast!" Background="Transparent" DockPanel.Dock="Bottom" VerticalAlignment="Bottom"/>
+                </DockPanel>
+            </hc:TabItem>
         </hc:TabControl>
     </Grid>
     <hc:Window.NonClientAreaContent>
         <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
             <Menu>
-                <MenuItem Header="{ip:Octicons Kind=Shield}" IsHitTestVisible="False"/>
+                <MenuItem Header="{ip:Octicons Kind=Shield}" IsHitTestVisible="False" x:Name="menuImage"/>
                 <MenuItem Header="File">
-                    <MenuItem Header="Open"/>
-                    <MenuItem Header="Export"/>
+                    <MenuItem Header="Open" Icon="{ip:Octicons Kind=File}"/>
+                    <MenuItem Header="Compare" Icon="{ip:Octicons Kind=GitCompare}" Click="menuCompare_Click" x:Name="menuCompare"/>
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}"/>
+                    <MenuItem Header="Scan (SVA)" Icon="{ip:Octicons Kind=Alert}"/>
+                    <MenuItem Header="Scan (VT)" Icon="{ip:Octicons Kind=Alert}"/>
+                    <MenuItem Header="Help" Icon="{ip:Octicons Kind=Bug}"/>
+                    <MenuItem Header="Version" IsHitTestVisible="False" Foreground="Gray" Icon="{ip:Octicons Kind=Versions}" x:Name="menuVersionString"/>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}"/>
+                    <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
+                    <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=GistSecret}"/>
+                    <MenuItem Header="Theme" Icon="{ip:Octicons Kind=Flame}">
+                        <MenuItem Header="Light" Icon="{ip:Octicons Kind=LightBulb}" IsCheckable="True" x:Name="menuThemeLight" Checked="menuThemeLight_Checked" Unchecked="menuThemeLight_Unchecked"></MenuItem>
+                        <MenuItem Header="Dark" Icon="{ip:Octicons Kind=Star}" IsChecked="True" IsCheckable="True" x:Name="menuThemeDark" Checked="menuThemeDark_Checked" Unchecked="menuThemeDark_Unchecked"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Preferences" Icon="{ip:Octicons Kind=Settings}"/>
                 </MenuItem>
                 <MenuItem Header="Action">
-                    <MenuItem Header="Generate new Password"/>
-                    <MenuItem Header="Generate new Hash Data"/>
-                </MenuItem>
-                <MenuItem Header="Generate">
-                    <MenuItem Header="Create new Password"/>
-                    <MenuItem Header="Create new Password"/>
-                    <MenuItem Header="Create new Password"/>
+                    <MenuItem Header="Hashing" Icon="{ip:Octicons Kind=FileCode}"/>
+                    <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=GistSecret}"/>
+                    <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=FileBinary}"/>
                 </MenuItem>
                 <MenuItem Header="Plugins">
                 </MenuItem>

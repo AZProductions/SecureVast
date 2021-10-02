@@ -10,10 +10,15 @@
     <PackageReference Include="HandyControl" Version="3.2.0" />
     <PackageReference Include="Kookaburra.SDK" Version="0.0.3.9" />
     <PackageReference Include="MahApps.Metro.IconPacks.Octicons" Version="4.9.0" />
+    <PackageReference Include="QRCoder" Version="1.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SecureVast.SDK\SecureVast.SDK.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dialogs\" />
   </ItemGroup>
 
 </Project>

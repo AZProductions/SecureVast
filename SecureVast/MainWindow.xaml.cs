@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HandyControl.Controls;
 using HandyControl.Themes;
+using HandyControl.Tools;
 using HandyControl;
 using QRCoder;
 using System.Drawing;
@@ -38,16 +39,26 @@ namespace SecureVast
 
         }
 
+        private void resetThemeSkin() 
+        {
+            if (Theme.GetSkin(this) == HandyControl.Data.SkinType.Dark)
+                ((App)App.Current).UpdateSkin(HandyControl.Data.SkinType.Dark);
+            else
+                ((App)App.Current).UpdateSkin(HandyControl.Data.SkinType.Default);
+        }
+
         private void menuThemeLight_Checked(object sender, RoutedEventArgs e)
         {
             menuThemeDark.IsChecked = false;
             Theme.SetSkin(this, HandyControl.Data.SkinType.Violet);
+            resetThemeSkin();
         }
 
         private void menuThemeDark_Checked(object sender, RoutedEventArgs e)
         {
             menuThemeLight.IsChecked = false;
             Theme.SetSkin(this, HandyControl.Data.SkinType.Dark);
+            resetThemeSkin();
         }
 
         private void menuThemeLight_Unchecked(object sender, RoutedEventArgs e)

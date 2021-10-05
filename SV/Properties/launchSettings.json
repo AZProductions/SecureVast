@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SV": {
+      "commandName": "Project",
+      "commandLineArgs": "qr test"
+    }
+  }
+}

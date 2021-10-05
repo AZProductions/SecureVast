@@ -1,0 +1,37 @@
+﻿<hc:Window x:Class="SecureVast.Dialogs.Setup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecureVast.Dialogs"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:ip="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        ShowTitle="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        hc:Theme.Skin="Dark"
+        MinHeight="375"
+        MinWidth="700"
+        Topmost="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Setup - SecureVast" Height="450" Width="800">
+    <Grid>
+        <hc:StepBar Name="step" Margin="0,29,0,0" FontSize="15" StepChanged="step_StepChanged">
+            <hc:StepBarItem Content="Welcome"/>
+            <hc:StepBarItem Content="Registration">
+            </hc:StepBarItem>
+            <hc:StepBarItem Content="Customization"/>
+            <hc:StepBarItem Content="Finished"/>
+        </hc:StepBar>
+        <Grid>
+            <Button x:Name="Prev" Click="Button_Prev" Width="89" Content="Cancel" HorizontalAlignment="Left" Margin="18,376,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="Next" Click="Button_Next" Width="119" Content="Next" HorizontalAlignment="Left" Margin="663,376,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid x:Name="stp_1">
+            <Image Source="/Resources/welcome.png" Width="300"></Image>
+            <Label Content="Welcome!" Margin="0,311,0,0" VerticalAlignment="Top" FontSize="20"></Label>
+        </Grid>
+    </Grid>
+</hc:Window>

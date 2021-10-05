@@ -99,5 +99,11 @@ namespace SecureVast
                 return bitmapimage;
             }
         }
+
+        private void test_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.Setup win = new Dialogs.Setup();
+            win.ShowDialog();
+        }
     }
 }

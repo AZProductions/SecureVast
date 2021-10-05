@@ -12,7 +12,7 @@
         Title="SecureVast"
         MinHeight="375"
         MinWidth="700"
-        Topmost="True"
+        Topmost="False"
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1050">
     <Grid>
@@ -20,7 +20,7 @@
             <hc:TabItem Header="Hashes">
                 <DockPanel>
                     <hc:Card Width="500" DockPanel.Dock="Right" Margin="10, 5, 0, 5" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                        
+                        <Button x:Name="test" Click="test_Click"></Button>
                     </hc:Card>
                 </DockPanel>
             </hc:TabItem>

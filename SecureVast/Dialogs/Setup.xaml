@@ -16,22 +16,22 @@
         Topmost="True"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Setup - SecureVast" Height="450" Width="800">
+        Title="Setup - SecureVast" Height="500" Width="850">
     <Grid>
-        <hc:StepBar Name="step" Margin="0,29,0,0" FontSize="15" StepChanged="step_StepChanged">
+        <hc:StepBar Name="stepBar" Height="100" VerticalAlignment="Top" Margin="0,10" StepChanged="stepBar_StepChanged">
             <hc:StepBarItem Content="Welcome"/>
-            <hc:StepBarItem Content="Registration">
-            </hc:StepBarItem>
+            <hc:StepBarItem Content="Registration"/>
             <hc:StepBarItem Content="Customization"/>
             <hc:StepBarItem Content="Finished"/>
         </hc:StepBar>
-        <Grid>
-            <Button x:Name="Prev" Click="Button_Prev" Width="89" Content="Cancel" HorizontalAlignment="Left" Margin="18,376,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="Next" Click="Button_Next" Width="119" Content="Next" HorizontalAlignment="Left" Margin="663,376,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="stepWelcome" Margin="0, 60, 0, 60">
+            <Image Source="/Resources/welcome.png" Width="300" VerticalAlignment="Top" Margin="0,50,0,0" HorizontalAlignment="Center"/>
+            <Label Content="Welcome" VerticalAlignment="Top" FontSize="30" FontWeight="SemiBold" Margin="0,250,0,0" BorderThickness="0" Background="Transparent"/>
+            <Label Content="Get started, in a matter of minutes." VerticalAlignment="Top" FontSize="20" FontWeight="Light" Margin="0,290,0,0" BorderThickness="0" Background="Transparent"/>
         </Grid>
-        <Grid x:Name="stp_1">
-            <Image Source="/Resources/welcome.png" Width="300"></Image>
-            <Label Content="Welcome!" Margin="0,311,0,0" VerticalAlignment="Top" FontSize="20"></Label>
+        <Grid x:Name="actionGrid">
+            <Button x:Name="actionBack" Click="actionBack_Click" Content="Exit" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25"/>
+            <Button x:Name="actionNext" Click="actionNext_Click" Content="Next" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="25"/>
         </Grid>
     </Grid>
 </hc:Window>

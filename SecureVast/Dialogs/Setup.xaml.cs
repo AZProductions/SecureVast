@@ -18,6 +18,7 @@ using HandyControl;
 using QRCoder;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 
 namespace SecureVast.Dialogs
 {
@@ -26,31 +27,41 @@ namespace SecureVast.Dialogs
     /// </summary>
     public partial class Setup : HandyControl.Controls.Window
     {
-        public bool BACKBTN = false;
+        public int STAGE = 0;
+        public int MAX_STAGE;
+        public string[] CONTENT_LABEL = { "Exit", "Back", "Back", "Back" };
 
         public Setup()
         {
             InitializeComponent();
         }
 
-        private void Button_Prev(object sender, RoutedEventArgs e)
+        private void stepBar_StepChanged(object sender, HandyControl.Data.FunctionEventArgs<int> e)
         {
-            if (BACKBTN == false)
+            STAGE++;
+            if (STAGE >= 1) 
+            {
+                STAGE = stepBar.StepIndex;
+                actionBack.Content = CONTENT_LABEL[STAGE];
+            }
+        }
+
+        private void ShowDialog(string input)
+        {
+            HandyControl.Controls.MessageBox.Show(input, "Debug");
+        }
+
+        private void actionBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (stepBar.StepIndex+1 == 1)
                 this.Close();
             else
-                step.Prev();
+                stepBar.Prev();
         }
 
-        private void Button_Next(object sender, RoutedEventArgs e)
+        private void actionNext_Click(object sender, RoutedEventArgs e)
         {
-            BACKBTN = true;
-            Prev.Content = "Back";
-            step.Next();
-        }
-
-        private void step_StepChanged(object sender, HandyControl.Data.FunctionEventArgs<int> e)
-        {
-            
+            stepBar.Next();
         }
     }
 }

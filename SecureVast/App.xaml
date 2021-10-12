@@ -11,4 +11,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
+    <JumpList.JumpList>
+        <JumpList ShowRecentCategory="True" ShowFrequentCategory="True"> <!--Ignore the errors, it is a runtime releated issue.-->
+            <JumpTask Title="Hashing" CustomCategory="Tasks" Description="Get the hashes from files in a matter of seconds." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="QR Codes" CustomCategory="Tasks" Description="Generate QR Codes with custom data, design and more." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="Passwords" CustomCategory="Tasks" Description="Generate secure passwords using the SecureVast SDK." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="Settings" CustomCategory="Tasks" Description="Open settings." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="Scan (VT)" CustomCategory="Actions" Description="Scans file using VirusTotal." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="Scan (SV)" CustomCategory="Actions" Description="Scans file using 'SecureVast Analytics and Diagnostics'." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+            <JumpTask Title="Help" CustomCategory="Actions" Description="Opens the Help webiste." ApplicationPath="C:\Windows\notepad.exe" IconResourcePath="C:\Windows\notepad.exe" IconResourceIndex="1"/>
+        </JumpList>
+    </JumpList.JumpList>
 </Application>

@@ -10,7 +10,6 @@
         ShowTitle="True"
         ShowInTaskbar="False"
         ShowActivated="False"
-        hc:Theme.Skin="Dark"
         MinHeight="375"
         MinWidth="700"
         Topmost="True"

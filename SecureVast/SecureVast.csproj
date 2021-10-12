@@ -43,4 +43,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\JumpList\" />
+  </ItemGroup>
+
 </Project>

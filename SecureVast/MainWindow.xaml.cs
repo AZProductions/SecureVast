@@ -20,6 +20,7 @@ using HandyControl;
 using QRCoder;
 using System.Drawing;
 using System.IO;
+using System.Windows.Shell;
 
 namespace SecureVast
 {
@@ -28,10 +29,51 @@ namespace SecureVast
     /// </summary>
     public partial class MainWindow : HandyControl.Controls.Window
     {
+        public static string LocalURI = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"/SecureVast/";
+        public static string LocalURI_JMP = LocalURI + "JMP.dll";
+
         public MainWindow()
         {
             InitializeComponent();
+            InitializeLocalURI();
+            InitializeJumpList();
             menuVersionString.Header = "V" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
+
+        private void InitializeLocalURI()
+        {
+            Directory.CreateDirectory(LocalURI);
+            if (!File.Exists(LocalURI_JMP))
+            {
+                File.WriteAllBytes(LocalURI_JMP, Properties.Resources.JumpList); 
+            }
+        }
+
+        private void InitializeJumpList() 
+        {
+            JumpList jumpList = new JumpList();
+            jumpList.ShowRecentCategory = true;
+            jumpList.ShowFrequentCategory = true;
+            ApplyJMPTasks("Hashing", "Get the hashes from files in a matter of seconds.", 3, LocalURI_JMP, "Tasks", "", "");
+            ApplyJMPTasks("QR Codes", "Generate QR Codes with custom data, design and more.", 2, LocalURI_JMP, "Tasks", "", "");
+            ApplyJMPTasks("Passwords", "Generate secure passwords using the SecureVast SDK.", 5, LocalURI_JMP, "Tasks", "", "");
+            ApplyJMPTasks("Preferences", "Open settings.", 4, LocalURI_JMP, "Tasks", "", "");
+            ApplyJMPTasks("Scan (VT)", "Scans file using VirusTotal.", 0, LocalURI_JMP, "Actions", "", "");
+            ApplyJMPTasks("Scan (SV)", "Scans file using 'SecureVast Analytics and Diagnostics'.", 0, LocalURI_JMP, "Actions", "", "");
+            ApplyJMPTasks("Help", "Opens the Help webiste.", 1, LocalURI_JMP, "Actions", "", "");
+            void ApplyJMPTasks(string name, string description, int index, string resx, string category, string path, string args) 
+            {
+                JumpTask jumpTask = new JumpTask();
+                jumpTask.IconResourcePath = resx;
+                jumpTask.Title = name;
+                jumpTask.IconResourceIndex = index;
+                jumpTask.Description = description;
+                jumpTask.Arguments = args;
+                jumpTask.ApplicationPath = path;
+                jumpTask.CustomCategory = category;
+                jumpList.JumpItems.Add(jumpTask);
+            }
+            jumpList.Apply();
         }
 
         private void MenuItem_Checked(object sender, RoutedEventArgs e)

@@ -73,11 +73,11 @@
                         <MenuItem Header="Light" Icon="{ip:Octicons Kind=LightBulb}" IsCheckable="True" x:Name="menuThemeLight" Checked="menuThemeLight_Checked" Unchecked="menuThemeLight_Unchecked"></MenuItem>
                         <MenuItem Header="Dark" Icon="{ip:Octicons Kind=Star}" IsChecked="True" IsCheckable="True" x:Name="menuThemeDark" Checked="menuThemeDark_Checked" Unchecked="menuThemeDark_Unchecked"></MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Preferences" Icon="{ip:Octicons Kind=Settings}"/>
+                    <MenuItem Header="Preferences" Icon="{ip:Octicons Kind=Gear}"/>
                 </MenuItem>
                 <MenuItem Header="Action">
                     <MenuItem Header="Hashing" Icon="{ip:Octicons Kind=FileCode}"/>
-                    <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=GistSecret}"/>
+                    <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=Key}"/>
                     <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
                     <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=FileBinary}"/>
                 </MenuItem>

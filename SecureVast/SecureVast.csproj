@@ -5,11 +5,25 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>0.0.1</Version>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <PackageProjectUrl>https://github.com/AZProductions/SecureVast</PackageProjectUrl>
+    <Description>Hashing, Encryption, Password Generation tool.</Description>
+    <Copyright>AZ Software License V2</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Authors>AZ Software</Authors>
+    <PackageTags>hashing qr code passwords generator SHA256 MD5 SHA1 SHA512</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\JumpList.dll" />
     <None Remove="Resources\welcome.png" />
+    <Resource Include="Resources\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

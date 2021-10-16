@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SecureVast"
              xmlns:hc="https://handyorg.github.io/handycontrol"
+             Startup="Application_Startup"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

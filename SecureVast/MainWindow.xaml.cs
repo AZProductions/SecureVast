@@ -21,6 +21,10 @@ using QRCoder;
 using System.Drawing;
 using System.IO;
 using System.Windows.Shell;
+using WSH = IWshRuntimeLibrary;
+using System.Diagnostics;
+//using HandyControl.Properties.Langs;
+using Lang = SecureVast.Translation;
 
 namespace SecureVast
 {
@@ -31,6 +35,7 @@ namespace SecureVast
     {
         public static string LocalURI = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"/SecureVast/";
         public static string LocalURI_JMP = LocalURI + "JMP.dll";
+        public static string Env_StartMenu = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu);
 
         public MainWindow()
         {
@@ -38,6 +43,20 @@ namespace SecureVast
             InitializeLocalURI();
             InitializeJumpList();
             menuVersionString.Header = "V" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            SDM_Custom.Focus();
+            DetectAndConvertFR();
+        }
+
+        private void DetectAndConvertFR() 
+        {
+            if (Properties.Settings.Default.FR)
+            {
+                Properties.Settings.Default.FR = false;
+                Dialogs.Setup win = new Dialogs.Setup();
+                win.ShowDialog();
+                Properties.Settings.Default.FR = false;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void InitializeLocalURI()
@@ -78,7 +97,7 @@ namespace SecureVast
 
         private void MenuItem_Checked(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void resetThemeSkin() 
@@ -115,7 +134,8 @@ namespace SecureVast
 
         private void menuCompare_Click(object sender, RoutedEventArgs e)
         {
-            HandyControl.Controls.MessageBox.Show("A new version has been detected! Do you want to update?", "Test", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            HandyControl.Controls.MessageBox.Show(Properties.Lang.about);
+            //HandyControl.Controls.MessageBox.Show("A new version has been detected! Do you want to update?", "Test", MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
         private void tb_TextChanged(object sender, TextChangedEventArgs e)
@@ -144,8 +164,16 @@ namespace SecureVast
 
         private void test_Click(object sender, RoutedEventArgs e)
         {
-            Dialogs.Setup win = new Dialogs.Setup();
-            win.ShowDialog();
+            WSH.WshShell wsh = new WSH.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\SecureVast.lnk") as IWshRuntimeLibrary.IWshShortcut;
+            shortcut.Arguments = "";
+            shortcut.TargetPath = Process.GetCurrentProcess().MainModule.FileName;
+            // not sure about what this is for
+            shortcut.WindowStyle = 1;
+            shortcut.Description = "Hashing, Encryption, Password Generation tool.";
+            shortcut.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            shortcut.IconLocation = LocalURI_JMP;
+            shortcut.Save();
         }
     }
 }

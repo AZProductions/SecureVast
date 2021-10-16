@@ -30,7 +30,7 @@
             <hc:TabItem Header="QR Codes">
                 <DockPanel>
                     <hc:SideMenu BorderThickness="1" Width="200" Margin="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <hc:SideMenuItem Header="Custom" Icon="{ip:Octicons Kind=Plus}" IsEnabled="True">
+                        <hc:SideMenuItem Header="Custom" Icon="{ip:Octicons Kind=Plus}" IsEnabled="True" x:Name="SDM_Custom" Focusable="True">
                         </hc:SideMenuItem>
                         <hc:SideMenuItem Header="Wifi" Icon="{ip:Octicons Kind=SignIn}">
                         </hc:SideMenuItem>

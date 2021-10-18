@@ -14,7 +14,7 @@
     <Authors>AZ Software</Authors>
     <PackageTags>hashing qr code passwords generator SHA256 MD5 SHA1 SHA512</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <ApplicationIcon>ico.ico</ApplicationIcon>
+    <ApplicationIcon>iconv4.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

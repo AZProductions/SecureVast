@@ -175,5 +175,27 @@ namespace SecureVast
             shortcut.IconLocation = LocalURI_JMP;
             shortcut.Save();
         }
+
+        private void lvdock_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                List<FileDropInfo> FileDropInfos = new List<FileDropInfo>();
+                PlaceHolder.Visibility = Visibility.Hidden;
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                FileInfo fi = new FileInfo(files[0]);
+                FileDropInfos.Add(new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName });
+                lv.ItemsSource = FileDropInfos;
+            }
+        }
+    }
+
+    public class FileDropInfo
+    {
+        public string Name { get; set; }
+
+        public string Extension { get; set; }
+
+        public string Path { get; set; }
     }
 }

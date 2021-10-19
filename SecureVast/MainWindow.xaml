@@ -13,7 +13,7 @@
         MinHeight="375"
         MinWidth="700"
         Topmost="False"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" 
         Height="700" Width="1050">
     <Grid>
         <hc:TabControl IsTabFillEnabled="False">
@@ -25,6 +25,19 @@
                         </hc:Card.Effect>
                         <Button x:Name="test" Click="test_Click"></Button>
                     </hc:Card>
+                    <DockPanel x:Name="lvdock" AllowDrop="True" DockPanel.Dock="Right" HorizontalAlignment="Stretch" Drop="lvdock_Drop">
+                        <hc:SearchBar AllowDrop="True" Drop="lvdock_Drop" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15" hc:InfoElement.Necessary="False" ShowClearButton="True" hc:InfoElement.Placeholder="Search for files."></hc:SearchBar>
+                        <ListView x:Name="lv" AllowDrop="True" Drop="lvdock_Drop" BorderThickness="0" HorizontalAlignment="Stretch" Margin="15">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Extension" Width="80" DisplayMemberBinding="{Binding Extension}" />
+                                    <GridViewColumn Header="Path" Width="{Binding ElementName=lvdock, Path=ActualWidth}" DisplayMemberBinding="{Binding Path}"  />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label FontSize="30" x:Name="PlaceHolder">Drag your files here.</Label>
+                    </DockPanel>
                 </DockPanel>
             </hc:TabItem>
             <hc:TabItem Header="Password Generator">
@@ -35,9 +48,8 @@
             </hc:TabItem>
             <hc:TabItem Header="QR Codes">
                 <DockPanel>
-                    <hc:SideMenu AutoSelect="True" BorderThickness="1" Width="200" Margin="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Stretch">
-                        <hc:SideMenuItem Header="Custom" Icon="{ip:Octicons Kind=Plus}" IsEnabled="True" x:Name="SDM_Custom" Focusable="True">
-                        </hc:SideMenuItem>
+                    <hc:SideMenu TabIndex="-1" AutoSelect="True" BorderThickness="1" Width="200" Margin="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                        <hc:SideMenuItem Header="Custom" Icon="{ip:Octicons Kind=Plus}" IsEnabled="True" x:Name="SDM_Custom" Focusable="True"/>
                         <hc:SideMenuItem Header="Wifi" Icon="{ip:Octicons Kind=SignIn}">
                         </hc:SideMenuItem>
                         <hc:SideMenuItem Header="Whatsapp Message" Icon="{ip:Octicons Kind=Note}"/>

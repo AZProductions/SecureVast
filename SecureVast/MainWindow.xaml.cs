@@ -26,6 +26,7 @@ using System.Diagnostics;
 //using HandyControl.Properties.Langs;
 using Lang = SecureVast.Translation;
 using Microsoft.Win32;
+using Ookii.Dialogs.Wpf;
 
 namespace SecureVast
 {
@@ -242,6 +243,15 @@ namespace SecureVast
                     FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
                     lv.Items.Add(fileDrop);
                 }
+            }
+        }
+
+        private void cmsImportFolderItem_Click(object sender, RoutedEventArgs e)
+        {
+            VistaFolderBrowserDialog folderBrowserDialog = new VistaFolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == true) 
+            {
+                HandyControl.Controls.MessageBox.Show(folderBrowserDialog.SelectedPath);
             }
         }
     }

@@ -25,6 +25,7 @@ using WSH = IWshRuntimeLibrary;
 using System.Diagnostics;
 //using HandyControl.Properties.Langs;
 using Lang = SecureVast.Translation;
+using Microsoft.Win32;
 
 namespace SecureVast
 {
@@ -134,8 +135,7 @@ namespace SecureVast
 
         private void menuCompare_Click(object sender, RoutedEventArgs e)
         {
-            HandyControl.Controls.MessageBox.Show(Properties.Lang.about);
-            //HandyControl.Controls.MessageBox.Show("A new version has been detected! Do you want to update?", "Test", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            HandyControl.Controls.MessageBox.Show(Properties.Lang.about); //Testing Localization features.
         }
 
         private void tb_TextChanged(object sender, TextChangedEventArgs e)
@@ -164,7 +164,7 @@ namespace SecureVast
 
         private void test_Click(object sender, RoutedEventArgs e)
         {
-            WSH.WshShell wsh = new WSH.WshShell();
+            /*WSH.WshShell wsh = new WSH.WshShell();
             IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\SecureVast.lnk") as IWshRuntimeLibrary.IWshShortcut;
             shortcut.Arguments = "";
             shortcut.TargetPath = Process.GetCurrentProcess().MainModule.FileName;
@@ -173,19 +173,75 @@ namespace SecureVast
             shortcut.Description = "Hashing, Encryption, Password Generation tool.";
             shortcut.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             shortcut.IconLocation = LocalURI_JMP;
-            shortcut.Save();
+            shortcut.Save();*/ //Creates shortcut on desktop.
         }
 
         private void lvdock_Drop(object sender, DragEventArgs e)
         {
+            List<string> HandledFilesInDrop = new List<string>();
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                List<FileDropInfo> FileDropInfos = new List<FileDropInfo>();
                 PlaceHolder.Visibility = Visibility.Hidden;
+                lv.Visibility = Visibility.Visible;
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                FileInfo fi = new FileInfo(files[0]);
-                FileDropInfos.Add(new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName });
-                lv.ItemsSource = FileDropInfos;
+                foreach (string file in files) 
+                {
+                    if (!HandledFilesInDrop.Contains(file))
+                    {
+                        FileInfo fi = new FileInfo(file);
+                        HandledFilesInDrop.Add(file);
+                        FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
+                        lv.Items.Add(fileDrop);
+                    }
+                }
+            }
+        }
+
+        private void lv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                List<FileDropInfo> fileDropInfos = new List<FileDropInfo>();
+                FileDropInfo file = (FileDropInfo)lv.SelectedItem;
+                if (file == null) { }
+                else
+                    testlabel.Content = "Name: " + file.Name;
+            }
+            catch { /*null*/ }
+        }
+
+        private void lvdock_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmsRemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            lv.Items.Remove(lv.SelectedItem); //Remove Selected Item.
+            try
+            {
+                MenuItem mi = (MenuItem)this.FindResource("cmsRemoveItem"); //Reference cmsRemoveItem.
+                if (lv.Items.Count == 1)
+                    mi.IsEnabled = false;
+                else
+                    mi.IsEnabled = true;
+            }
+            catch { /*null*/ }
+        }
+
+        private void cmsAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Title = "Add Files - SecureVast";
+            if (openFileDialog.ShowDialog() == true) 
+            {
+                foreach (string file in openFileDialog.FileNames) 
+                {
+                    FileInfo fi = new FileInfo(file);
+                    FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
+                    lv.Items.Add(fileDrop);
+                }
             }
         }
     }

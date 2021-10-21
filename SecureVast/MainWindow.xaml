@@ -24,7 +24,7 @@
                             <DropShadowEffect BlurRadius="26" Opacity="0.29" Color="Gray" Direction="317" ShadowDepth="10"/>
                         </hc:Card.Effect>
                         <DockPanel>
-                            <Label x:Name="testlabel" Content="Name:" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                            <Label x:Name="testlabel" BorderThickness="0" Content="Test.txt" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
                             <Button x:Name="test" Click="test_Click" Content="hello"/>
                         </DockPanel>
                     </hc:Card>

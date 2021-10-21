@@ -1,0 +1,24 @@
+﻿<hc:Window x:Class="SecureVast.Dialogs.Compare"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecureVast.Dialogs"
+        mc:Ignorable="d"
+        ShowTitle="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        MinHeight="375"
+        MinWidth="700"
+        Topmost="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Compare Files - SecureVast" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <RichTextBox x:Name="rTB" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" IsReadOnly="True" Margin="20" Height="147"></RichTextBox>
+        </DockPanel>
+        <Label Content="Logs:" HorizontalAlignment="Left" Margin="20,237,0,0" BorderThickness="0" VerticalAlignment="Top"></Label>
+    </Grid>
+</hc:Window>

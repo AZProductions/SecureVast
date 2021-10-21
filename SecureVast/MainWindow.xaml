@@ -113,6 +113,7 @@
         <ContextMenu x:Key="ListViewCMS">
             <MenuItem x:Name="cmsAddItem" Click="cmsAddItem_Click" Header="Add Files" Icon="{ip:Octicons Kind=DiffAdded}"></MenuItem>
             <MenuItem x:Name="cmsRemoveItem" Click="cmsRemoveItem_Click" Header="Remove" Icon="{ip:Octicons Kind=DiffRemoved}"></MenuItem>
+            <MenuItem x:Name="cmsRemoveItems" Click="cmsRemoveItems_Click" Header="Remove All" Icon="{ip:Octicons Kind=DiffIgnored}"></MenuItem>
             <MenuItem x:Name="cmsImportFolderItem" Click="cmsImportFolderItem_Click" Header="Import Folder" Icon="{ip:Octicons Kind=DiffModified}"></MenuItem>
         </ContextMenu>
     </Window.Resources>

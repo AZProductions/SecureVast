@@ -175,6 +175,8 @@ namespace SecureVast
             shortcut.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             shortcut.IconLocation = LocalURI_JMP;
             shortcut.Save();*/ //Creates shortcut on desktop.
+            Dialogs.Compare compare = new Dialogs.Compare();
+            compare.ShowDialog();
         }
 
         private void lvdock_Drop(object sender, DragEventArgs e)
@@ -251,8 +253,19 @@ namespace SecureVast
             VistaFolderBrowserDialog folderBrowserDialog = new VistaFolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == true) 
             {
-                HandyControl.Controls.MessageBox.Show(folderBrowserDialog.SelectedPath);
+                string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath);
+                foreach (string file in files) 
+                {
+                    FileInfo fi = new FileInfo(file);
+                    FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
+                    lv.Items.Add(fileDrop);
+                }
             }
+        }
+
+        private void cmsRemoveItems_Click(object sender, RoutedEventArgs e)
+        {
+            lv.Items.Clear();
         }
     }
 

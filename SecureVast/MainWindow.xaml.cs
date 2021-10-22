@@ -27,6 +27,7 @@ using System.Diagnostics;
 using Lang = SecureVast.Translation;
 using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace SecureVast
 {
@@ -266,6 +267,11 @@ namespace SecureVast
         private void cmsRemoveItems_Click(object sender, RoutedEventArgs e)
         {
             lv.Items.Clear();
+        }
+
+        private void NotifyGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            //NotifyIcon is Loaded.
         }
     }
 

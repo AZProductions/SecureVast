@@ -79,6 +79,17 @@
                 </DockPanel>
             </hc:TabItem>
         </hc:TabControl>
+        <hc:NotifyIcon Text="HandyControl" Icon="/SecureVast;component/Resources/NotifyIcon.ico">
+            <hc:NotifyIcon.ContextContent>
+                <Grid Height="600" Width="300" Margin="30" x:Name="NotifyGrid" Loaded="NotifyGrid_Loaded">
+                    <Grid.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="10" Opacity="0.50"/>
+                    </Grid.Effect>
+                    <Rectangle Fill="#e0e0e0" RadiusX="20" RadiusY="20">
+                    </Rectangle>
+                </Grid>
+            </hc:NotifyIcon.ContextContent>
+        </hc:NotifyIcon>
     </Grid>
     <hc:Window.NonClientAreaContent>
         <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">

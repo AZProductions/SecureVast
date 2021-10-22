@@ -8,11 +8,11 @@
         xmlns:ip="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         ShowTitle="False"
-        hc:Theme.Skin="Dark"
+        hc:Theme.Skin="Violet"
         Title="SecureVast"
         MinHeight="375"
         MinWidth="700"
-        Topmost="False"
+        Topmost="True"
         WindowStartupLocation="CenterScreen" 
         Height="700" Width="1050">
     <Grid>
@@ -23,10 +23,17 @@
                         <hc:Card.Effect>
                             <DropShadowEffect BlurRadius="26" Opacity="0.29" Color="Gray" Direction="317" ShadowDepth="10"/>
                         </hc:Card.Effect>
-                        <DockPanel>
-                            <Label x:Name="testlabel" BorderThickness="0" Content="Test.txt" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                        <Grid>
                             <Button x:Name="test" Click="test_Click" Content="hello"/>
-                        </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="testlabel" BorderThickness="1" Content="Test.txt" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                                <hc:Card DockPanel.Dock="Bottom" BorderThickness="1" Height="150" BorderBrush="Transparent" Background="#33838383" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20">
+                                    <hc:Card.Effect>
+                                        <DropShadowEffect BlurRadius="43" Direction="324" Opacity="1" Color="#bcbcbc" ShadowDepth="12"/>
+                                    </hc:Card.Effect>
+                                </hc:Card>
+                            </DockPanel>
+                        </Grid>
                     </hc:Card>
                     <DockPanel x:Name="lvdock" Background="Transparent" AllowDrop="True" DockPanel.Dock="Right" HorizontalAlignment="Stretch" PreviewDragOver="lvdock_PreviewDragOver" Drop="lvdock_Drop">
                         <hc:SearchBar AllowDrop="False" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15" hc:InfoElement.Necessary="False" ShowClearButton="True" hc:InfoElement.Placeholder="Search for files."></hc:SearchBar>

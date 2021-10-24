@@ -114,7 +114,7 @@ namespace SecureVast
         private void menuThemeLight_Checked(object sender, RoutedEventArgs e)
         {
             menuThemeDark.IsChecked = false;
-            Theme.SetSkin(this, HandyControl.Data.SkinType.Violet);
+            Theme.SetSkin(this, HandyControl.Data.SkinType.Default);
             resetThemeSkin();
         }
 
@@ -272,6 +272,27 @@ namespace SecureVast
         private void NotifyGrid_Loaded(object sender, RoutedEventArgs e)
         {
             //NotifyIcon is Loaded.
+        }
+
+        private void menuActionHashing_Click(object sender, RoutedEventArgs e)
+        {
+            MainTab.SelectedIndex = 0;
+        }
+
+        private void menuActionPasswords_Click(object sender, RoutedEventArgs e)
+        {
+            MainTab.SelectedIndex = 1;
+        }
+
+        private void menuHelp_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "cmd",
+                Arguments = "/c start https://KKB.NL.EU.ORG/sv-help"
+            };
+            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            Process.Start(psi);
         }
     }
 

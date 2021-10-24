@@ -8,7 +8,7 @@
         xmlns:ip="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         ShowTitle="False"
-        hc:Theme.Skin="Violet"
+        hc:Theme.Skin="Default"
         Title="SecureVast"
         MinHeight="375"
         MinWidth="700"
@@ -16,7 +16,7 @@
         WindowStartupLocation="CenterScreen" 
         Height="700" Width="1050">
     <Grid>
-        <hc:TabControl IsTabFillEnabled="False">
+        <hc:TabControl x:Name="MainTab" IsTabFillEnabled="False">
             <hc:TabItem Header="Hashes">
                 <DockPanel>
                     <hc:Card Width="500" DockPanel.Dock="Left" Margin="15, 15, 0, 15" HorizontalAlignment="Left" VerticalAlignment="Stretch">
@@ -24,10 +24,16 @@
                             <DropShadowEffect BlurRadius="26" Opacity="0.29" Color="Gray" Direction="317" ShadowDepth="10"/>
                         </hc:Card.Effect>
                         <Grid>
-                            <Button x:Name="test" Click="test_Click" Content="hello"/>
                             <DockPanel>
-                                <Label x:Name="testlabel" BorderThickness="1" Content="Test.txt" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                                <Label x:Name="testlabel" BorderThickness="0" Content="SecureVast" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
                                 <hc:Card DockPanel.Dock="Bottom" BorderThickness="1" Height="150" BorderBrush="Transparent" Background="#33838383" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20">
+                                    <Grid>
+                                        <Label Content="Scan your files with the VirusTotal API." FontSize="17" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"></Label>
+                                        <Label Content="To start, you need to get a VirusTotal API Key." FontSize="12" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"></Label>
+                                        <Label Content="Note: This feature is still in development." FontStyle="Italic" FontSize="12" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                        <Button x:Name="test" Click="test_Click" Content="Scan with VirusTotal" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Height="33" Width="142"/>
+                                        <hc:CircleProgressBar Width="100" Margin="321,24,35,24" Value="40"></hc:CircleProgressBar>
+                                    </Grid>
                                     <hc:Card.Effect>
                                         <DropShadowEffect BlurRadius="43" Direction="324" Opacity="1" Color="#bcbcbc" ShadowDepth="12"/>
                                     </hc:Card.Effect>
@@ -50,13 +56,16 @@
                     </DockPanel>
                 </DockPanel>
             </hc:TabItem>
-            <hc:TabItem Header="Password Generator">
-                <hc:AnimationPath Data="{DynamicResource Icon_Geometry}" Width="600"
+            <hc:TabItem Header="Password Generator" IsEnabled="False">
+                <Grid>
+                    <hc:AnimationPath Data="{DynamicResource Icon_Geometry}" Width="200"
                           Duration="00:00:02"
                           Stretch="Uniform" StrokeThickness="1"
-                          Stroke="Black"></hc:AnimationPath>
+                          Stroke="Gray"></hc:AnimationPath>
+                    <Label Content="This windows is still in development, please update SecureVast." BorderThickness="2" Background="Transparent" Margin="0,390,0,0" VerticalAlignment="Top"></Label>
+                </Grid>
             </hc:TabItem>
-            <hc:TabItem Header="QR Codes">
+            <hc:TabItem Header="QR Codes" IsEnabled="False">
                 <DockPanel>
                     <hc:SideMenu TabIndex="-1" AutoSelect="True" BorderThickness="1" Width="200" Margin="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                         <hc:SideMenuItem Header="Custom" Icon="{ip:Octicons Kind=Plus}" IsEnabled="True" x:Name="SDM_Custom" Focusable="True"/>
@@ -79,17 +88,7 @@
                 </DockPanel>
             </hc:TabItem>
         </hc:TabControl>
-        <hc:NotifyIcon Text="HandyControl" Icon="/SecureVast;component/Resources/NotifyIcon.ico">
-            <hc:NotifyIcon.ContextContent>
-                <Grid Height="600" Width="300" Margin="30" x:Name="NotifyGrid" Loaded="NotifyGrid_Loaded">
-                    <Grid.Effect>
-                        <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="10" Opacity="0.50"/>
-                    </Grid.Effect>
-                    <Rectangle Fill="#e0e0e0" RadiusX="20" RadiusY="20">
-                    </Rectangle>
-                </Grid>
-            </hc:NotifyIcon.ContextContent>
-        </hc:NotifyIcon>
+
     </Grid>
     <hc:Window.NonClientAreaContent>
         <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
@@ -98,14 +97,14 @@
                 <MenuItem Header="File">
                     <MenuItem Header="Open" Icon="{ip:Octicons Kind=File}"/>
                     <MenuItem Header="Compare" Icon="{ip:Octicons Kind=GitCompare}" Click="menuCompare_Click" x:Name="menuCompare"/>
-                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}"/>
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}" IsEnabled="False"/>
                     <MenuItem Header="Scan (SVA)" Icon="{ip:Octicons Kind=Alert}"/>
                     <MenuItem Header="Scan (VT)" Icon="{ip:Octicons Kind=Alert}"/>
                     <MenuItem Header="Help" Icon="{ip:Octicons Kind=Bug}"/>
                     <MenuItem Header="Version" IsHitTestVisible="False" Foreground="Gray" Icon="{ip:Octicons Kind=Versions}" x:Name="menuVersionString"/>
                 </MenuItem>
                 <MenuItem Header="Edit">
-                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}"/>
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=Info}" IsEnabled="False"/>
                     <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
                     <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=GistSecret}"/>
                     <MenuItem Header="Theme" Icon="{ip:Octicons Kind=Flame}">
@@ -115,15 +114,27 @@
                     <MenuItem Header="Preferences" Icon="{ip:Octicons Kind=Gear}"/>
                 </MenuItem>
                 <MenuItem Header="Action">
-                    <MenuItem Header="Hashing" Icon="{ip:Octicons Kind=FileCode}"/>
-                    <MenuItem Header="Passwords" Icon="{ip:Octicons Kind=Key}"/>
+                    <MenuItem Header="Hashing" x:Name="menuActionHashing" Click="menuActionHashing_Click" Icon="{ip:Octicons Kind=FileCode}"/>
+                    <MenuItem Header="Passwords" x:Name="menuActionPasswords" Click="menuActionPasswords_Click" Icon="{ip:Octicons Kind=Key}"/>
                     <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
-                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=FileBinary}"/>
+                    <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=FileBinary}" IsEnabled="False"/>
                 </MenuItem>
                 <MenuItem Header="Plugins">
                 </MenuItem>
-                <Button Content="Help" Style="{StaticResource ButtonCustom}"/>
+                <Button Content="Help" Style="{StaticResource ButtonCustom}" x:Name="menuHelp" Click="menuHelp_Click"/>
             </Menu>
+            <hc:NotifyIcon Text="HandyControl" Icon="/SecureVast;component/Resources/NotifyIcon.ico">
+                <hc:NotifyIcon.ContextContent>
+                    <Grid Height="600" Width="300" Margin="30" x:Name="NotifyGrid" Loaded="NotifyGrid_Loaded" Visibility="Hidden">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="Black" BlurRadius="20" ShadowDepth="10" Opacity="0.50"/>
+                        </Grid.Effect>
+                        <Rectangle Fill="#e0e0e0" RadiusX="20" RadiusY="20">
+                        </Rectangle>
+                        <Label Content="This is a work in progress, please update this app in the Microsoft Store or on the Github Releases page."></Label>
+                    </Grid>
+                </hc:NotifyIcon.ContextContent>
+            </hc:NotifyIcon>
         </StackPanel>
     </hc:Window.NonClientAreaContent>
     <Window.Resources>

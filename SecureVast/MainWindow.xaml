@@ -12,7 +12,7 @@
         Title="SecureVast"
         MinHeight="375"
         MinWidth="700"
-        Topmost="True"
+        Topmost="False"
         WindowStartupLocation="CenterScreen" 
         Height="700" Width="1050">
     <Grid>
@@ -32,7 +32,7 @@
                                         <Label Content="To start, you need to get a VirusTotal API Key." FontSize="12" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"></Label>
                                         <Label Content="Note: This feature is still in development." FontStyle="Italic" FontSize="12" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                                         <Button x:Name="test" Click="test_Click" Content="Scan with VirusTotal" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Height="33" Width="142"/>
-                                        <hc:CircleProgressBar Width="100" Margin="321,24,35,24" Value="40"></hc:CircleProgressBar>
+                                        <hc:CircleProgressBar Width="100" Margin="321,24,35,24" Value="0"/>
                                     </Grid>
                                     <hc:Card.Effect>
                                         <DropShadowEffect BlurRadius="43" Direction="324" Opacity="1" Color="#bcbcbc" ShadowDepth="12"/>

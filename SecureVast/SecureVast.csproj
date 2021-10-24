@@ -46,7 +46,7 @@
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.2.0" />
-    <PackageReference Include="Kookaburra.SDK" Version="0.0.3.9" />
+    <PackageReference Include="Kookaburra.SDK" Version="0.0.4.2" />
     <PackageReference Include="MahApps.Metro.IconPacks.Octicons" Version="4.11.0" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="4.0.0" />
     <PackageReference Include="QRCoder" Version="1.4.1" />

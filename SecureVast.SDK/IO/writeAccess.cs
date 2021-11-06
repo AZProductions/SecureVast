@@ -9,7 +9,7 @@ namespace SecureVast.SDK.IO
 {
     internal sealed class writeAccess
     {
-        private static bool GetAccess(string dirPath, bool throwIfFails = false)
+        internal static bool GetAccess(string dirPath, bool throwIfFails = false)
         {
             try
             {

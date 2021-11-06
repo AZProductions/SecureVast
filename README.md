@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/AZProductions/SecureVast/main/Resource/Final.png" width="256"/><br />
+<img src="https://github.com/AZProductions/SecureVast/blob/main/lib/logo/icon.png?raw=true" width="256"/><br />
 SecureVast
 </h1>
 <h4 align="center" style="font-weight: bold; font-style: italic;"> Hashing, Encryption, Password Generation tool. Get the Desktop app, or start making your own projects using the SDK. Get started today, and create the software for tomorrow.</h4>

@@ -1,33 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using HandyControl.Controls;
-using HandyControl.Themes;
-using HandyControl.Tools;
-using HandyControl;
-using QRCoder;
-using System.Drawing;
-using System.IO;
-using System.Windows.Shell;
-using WSH = IWshRuntimeLibrary;
-using System.Diagnostics;
-//using HandyControl.Properties.Langs;
-using Lang = SecureVast.Translation;
+﻿using HandyControl.Themes;
 using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
+using QRCoder;
+using SecureVast.SDK;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Windows.Shell;
 using MessageBox = HandyControl.Controls.MessageBox;
+using WSH = IWshRuntimeLibrary;
 
 namespace SecureVast
 {
@@ -50,7 +37,7 @@ namespace SecureVast
             DetectAndConvertFR();
         }
 
-        private void DetectAndConvertFR() 
+        private void DetectAndConvertFR()
         {
             if (Properties.Settings.Default.FR)
             {
@@ -67,11 +54,11 @@ namespace SecureVast
             Directory.CreateDirectory(LocalURI);
             if (!File.Exists(LocalURI_JMP))
             {
-                File.WriteAllBytes(LocalURI_JMP, Properties.Resources.JumpList); 
+                File.WriteAllBytes(LocalURI_JMP, Properties.Resources.JumpList);
             }
         }
 
-        private void InitializeJumpList() 
+        private void InitializeJumpList()
         {
             JumpList jumpList = new JumpList();
             jumpList.ShowRecentCategory = true;
@@ -83,7 +70,7 @@ namespace SecureVast
             ApplyJMPTasks("Scan (VT)", "Scans file using VirusTotal.", 0, LocalURI_JMP, "Actions", "", "");
             ApplyJMPTasks("Scan (SV)", "Scans file using 'SecureVast Analytics and Diagnostics'.", 0, LocalURI_JMP, "Actions", "", "");
             ApplyJMPTasks("Help", "Opens the Help webiste.", 1, LocalURI_JMP, "Actions", "", "");
-            void ApplyJMPTasks(string name, string description, int index, string resx, string category, string path, string args) 
+            void ApplyJMPTasks(string name, string description, int index, string resx, string category, string path, string args)
             {
                 JumpTask jumpTask = new JumpTask();
                 jumpTask.IconResourcePath = resx;
@@ -100,10 +87,10 @@ namespace SecureVast
 
         private void MenuItem_Checked(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
-        private void resetThemeSkin() 
+        private void resetThemeSkin()
         {
             if (Theme.GetSkin(this) == HandyControl.Data.SkinType.Dark)
                 ((App)App.Current).UpdateSkin(HandyControl.Data.SkinType.Dark);
@@ -147,7 +134,7 @@ namespace SecureVast
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             img.Source = BitmapToImageSource(qrCodeImage);
-            
+
         }
         private BitmapImage BitmapToImageSource(System.Drawing.Bitmap bitmap)
         {
@@ -188,7 +175,7 @@ namespace SecureVast
                 PlaceHolder.Visibility = Visibility.Hidden;
                 lv.Visibility = Visibility.Visible;
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                foreach (string file in files) 
+                foreach (string file in files)
                 {
                     if (!HandledFilesInDrop.Contains(file))
                     {
@@ -209,7 +196,13 @@ namespace SecureVast
                 FileDropInfo file = (FileDropInfo)lv.SelectedItem;
                 if (file == null) { }
                 else
-                    testlabel.Content = "Name: " + file.Name;
+                {
+                    FileHash fileHash = new FileHash(file.Path);
+                    FileName.Content = file.Name;
+                    Demo1.Content = "SHA256: " + fileHash.SHA256;
+                    Demo2.Content = "SHA1: " + fileHash.SHA1;
+                    Demo3.Content = "MD5: " + fileHash.MD5;
+                }
             }
             catch { /*null*/ }
         }
@@ -238,9 +231,9 @@ namespace SecureVast
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
             openFileDialog.Title = "Add Files - SecureVast";
-            if (openFileDialog.ShowDialog() == true) 
+            if (openFileDialog.ShowDialog() == true)
             {
-                foreach (string file in openFileDialog.FileNames) 
+                foreach (string file in openFileDialog.FileNames)
                 {
                     FileInfo fi = new FileInfo(file);
                     FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
@@ -252,10 +245,10 @@ namespace SecureVast
         private void cmsImportFolderItem_Click(object sender, RoutedEventArgs e)
         {
             VistaFolderBrowserDialog folderBrowserDialog = new VistaFolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == true) 
+            if (folderBrowserDialog.ShowDialog() == true)
             {
                 string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath);
-                foreach (string file in files) 
+                foreach (string file in files)
                 {
                     FileInfo fi = new FileInfo(file);
                     FileDropInfo fileDrop = new FileDropInfo() { Name = fi.Name, Extension = fi.Extension, Path = fi.FullName };
@@ -291,17 +284,8 @@ namespace SecureVast
                 FileName = "cmd",
                 Arguments = "/c start https://KKB.NL.EU.ORG/sv-help"
             };
-            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            psi.WindowStyle = ProcessWindowStyle.Minimized;
             Process.Start(psi);
         }
-    }
-
-    public class FileDropInfo
-    {
-        public string Name { get; set; }
-
-        public string Extension { get; set; }
-
-        public string Path { get; set; }
     }
 }

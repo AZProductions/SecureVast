@@ -2,11 +2,6 @@
 using HandyControl.Themes;
 using HandyControl.Tools;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SecureVast
@@ -31,7 +26,7 @@ namespace SecureVast
         {
             if (e.Args.Length > 0)
             {
-                
+
             }
         }
     }

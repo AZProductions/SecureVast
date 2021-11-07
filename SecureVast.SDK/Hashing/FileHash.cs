@@ -6,7 +6,8 @@ namespace SecureVast.SDK
     public class FileHash
     {
         private readonly bool writeAccess = IO.writeAccess.GetAccess(Path.GetTempPath(), true);
-        private string location { get; }
+        internal string location { get; }
+        internal FileInfo localFile { get; }
 
         public FileHash(string Location)
         {
@@ -16,6 +17,7 @@ namespace SecureVast.SDK
             }
 
             location = Location;
+            localFile = new FileInfo(location);
             SHA1 = Algorithms.SHA1Generator.SHA1(location);
             SHA256 = Algorithms.SHA256Generator.SHA256(location);
 #pragma warning disable CS0618
@@ -23,11 +25,16 @@ namespace SecureVast.SDK
 #pragma warning restore CS0618
         }
 
+        public override string ToString()
+        {
+            return localFile.FullName;
+        }
+
         public string SHA256 { get; }
         public string SHA1 { get; }
         public string MD5 { get; }
         public string FullName { get; } = null;
-        public string Name { get; } = Path.GetFileNameWithoutExtension(null);
+        public string Name { get; } = null;
         public bool WriteAccess => writeAccess;
     }
 }

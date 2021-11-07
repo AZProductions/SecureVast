@@ -25,7 +25,10 @@
                         </hc:Card.Effect>
                         <Grid>
                             <DockPanel>
-                                <Label x:Name="testlabel" BorderThickness="0" Content="SecureVast" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                                <Label x:Name="FileName" BorderThickness="0" Content="SecureVast" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Margin="20" FontWeight="SemiBold"/>
+                                <Label x:Name="Demo1" BorderThickness="0" Content="" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" ScrollViewer.CanContentScroll="True" Margin="5" FontWeight="SemiBold"/>
+                                <Label x:Name="Demo2" BorderThickness="0" Content="" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5" FontWeight="SemiBold"/>
+                                <Label x:Name="Demo3" BorderThickness="0" Content="" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="5" FontWeight="SemiBold"/>
                                 <hc:Card DockPanel.Dock="Bottom" BorderThickness="1" Height="150" BorderBrush="Transparent" Background="#33838383" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20">
                                     <Grid>
                                         <Label Content="Scan your files with the VirusTotal API." FontSize="17" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"></Label>
@@ -119,11 +122,11 @@
                     <MenuItem Header="QR Code" Icon="{ip:Octicons Kind=Code}"/>
                     <MenuItem Header="Metadata" Icon="{ip:Octicons Kind=FileBinary}" IsEnabled="False"/>
                 </MenuItem>
-                <MenuItem Header="Plugins">
+                <MenuItem Header="Plugins" IsEnabled="False" ToolTip="This feature is still a work-in-progress.">
                 </MenuItem>
                 <Button Content="Help" Style="{StaticResource ButtonCustom}" x:Name="menuHelp" Click="menuHelp_Click"/>
             </Menu>
-            <hc:NotifyIcon Text="HandyControl" Icon="/SecureVast;component/Resources/NotifyIcon.ico">
+            <hc:NotifyIcon Text="SecureVast" Icon="/SecureVast;component/Resources/NotifyIcon.ico">
                 <hc:NotifyIcon.ContextContent>
                     <Grid Height="600" Width="300" Margin="30" x:Name="NotifyGrid" Loaded="NotifyGrid_Loaded" Visibility="Hidden">
                         <Grid.Effect>

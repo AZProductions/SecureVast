@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SecureVast"
              xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
              Startup="Application_Startup"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
                 <hc:Theme Name="HandyTheme"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-    <!--JMP Location-->
 </Application>

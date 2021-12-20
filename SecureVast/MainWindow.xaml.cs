@@ -1,5 +1,6 @@
 ﻿using HandyControl.Themes;
 using Microsoft.Win32;
+using ModernWpf.Controls;
 using Ookii.Dialogs.Wpf;
 using QRCoder;
 using SecureVast.SDK;
@@ -9,6 +10,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -163,8 +165,17 @@ namespace SecureVast
             shortcut.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             shortcut.IconLocation = LocalURI_JMP;
             shortcut.Save();*/ //Creates shortcut on desktop.
-            Dialogs.Compare compare = new Dialogs.Compare();
-            compare.ShowDialog();
+            ContentDialog NotSupportedDialog = new ContentDialog
+            {
+                Title = "This feature is not yet supported.",
+                Content = "SecureVast is still in development, do you want to check for updates?",
+                CloseButtonText = "Not Now",
+                PrimaryButtonText = "Yes",
+                SecondaryButtonText = "Later",
+                DefaultButton = ContentDialogButton.Primary,
+                IsSecondaryButtonEnabled = false
+            };
+            var output = NotSupportedDialog.ShowAsync();
         }
 
         private void lvdock_Drop(object sender, DragEventArgs e)
@@ -199,9 +210,9 @@ namespace SecureVast
                 {
                     FileHash fileHash = new FileHash(file.Path);
                     FileName.Content = file.Name;
-                    Demo1.Content = "SHA256: " + fileHash.SHA256;
-                    Demo2.Content = "SHA1: " + fileHash.SHA1;
-                    Demo3.Content = "MD5: " + fileHash.MD5;
+                    OuputHash1.Content = "SHA256: " + fileHash.SHA256;
+                    OutputHash2.Content = "SHA1: " + fileHash.SHA1;
+                    OutputHash3.Content = "MD5: " + fileHash.MD5;
                 }
             }
             catch { /*null*/ }
@@ -279,13 +290,36 @@ namespace SecureVast
 
         private void menuHelp_Click(object sender, RoutedEventArgs e)
         {
-            ProcessStartInfo psi = new ProcessStartInfo
+            OpenUrl("https://KKB.NL.EU.ORG/sv-help");
+        }
+
+        private void OpenUrl(string url)
+        {
+            try
             {
-                FileName = "cmd",
-                Arguments = "/c start https://KKB.NL.EU.ORG/sv-help"
-            };
-            psi.WindowStyle = ProcessWindowStyle.Minimized;
-            Process.Start(psi);
+                Process.Start(url);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
     }
 }
